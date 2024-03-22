@@ -4,6 +4,7 @@
 
 enum Network {
   ARBITRUM_ONE
+  FUJI
   ARWEAVE_MAINNET
   AURORA
   AVALANCHE

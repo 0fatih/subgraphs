@@ -60,16 +60,16 @@ export namespace RewardIntervalType {
 // 86400 = 1 Day
 export const RATE_IN_SECONDS = 86400;
 export const RATE_IN_SECONDS_BD = BigDecimal.fromString(
-  RATE_IN_SECONDS.toString()
+  RATE_IN_SECONDS.toString(),
 );
 
 // Estimated seconds per block of the protocol
 export const STARTING_BLOCKS_PER_DAY = RATE_IN_SECONDS_BD.div(
-  getStartingBlockRate()
+  getStartingBlockRate(),
 );
 
 export const WINDOW_SIZE_SECONDS_BD = BigDecimal.fromString(
-  WINDOW_SIZE_SECONDS.toString()
+  WINDOW_SIZE_SECONDS.toString(),
 );
 
 // Call this function in event handlers frequently enough so that it calls on blocks frequently enough
@@ -84,7 +84,7 @@ export function getRewardsPerDay(
   currentTimestamp: BigInt,
   currentBlockNumber: BigInt,
   rewardRate: BigDecimal,
-  rewardType: string
+  rewardType: string,
 ): BigDecimal {
   const circularBuffer = getOrCreateCircularBuffer();
 
@@ -96,7 +96,7 @@ export function getRewardsPerDay(
 
   // Interval between index and the index of the start of the window block
   const windowWidth = abs(
-    circularBuffer.windowStartIndex - circularBuffer.nextIndex
+    circularBuffer.windowStartIndex - circularBuffer.nextIndex,
   );
   if (windowWidth == INT_ZERO) {
     if (circularBuffer.nextIndex >= circularBuffer.bufferSize) {
@@ -169,14 +169,14 @@ export function getRewardsPerDay(
 
   // Wideness of the window in seconds.
   const windowSecondsCount = BigDecimal.fromString(
-    (currentTimestampI32 - blocks[circularBuffer.windowStartIndex]).toString()
+    (currentTimestampI32 - blocks[circularBuffer.windowStartIndex]).toString(),
   );
 
   // Wideness of the window in blocks.
   const windowBlocksCount = BigDecimal.fromString(
     (
       currentBlockNumberI32 - blocks[circularBuffer.windowStartIndex + INT_ONE]
-    ).toString()
+    ).toString(),
   );
 
   // Estimate block speed for the window in seconds.
@@ -190,7 +190,7 @@ export function getRewardsPerDay(
   let normalizedBlockSpeed = BIGDECIMAL_ZERO;
   if (unnormalizedBlockSpeed != BIGDECIMAL_ZERO) {
     normalizedBlockSpeed = RATE_IN_SECONDS_BD.div(WINDOW_SIZE_SECONDS_BD).times(
-      unnormalizedBlockSpeed
+      unnormalizedBlockSpeed,
     );
   }
 
@@ -252,6 +252,8 @@ function getStartingBlockRate(): BigDecimal {
   } else if (network == Network.MATIC) {
     return BigDecimal.fromString("2");
   } else if (network == Network.XDAI) {
+    return BigDecimal.fromString("5");
+  } else if (network == Network.FUJI) {
     return BigDecimal.fromString("5");
   }
   // Blocks are mined as needed

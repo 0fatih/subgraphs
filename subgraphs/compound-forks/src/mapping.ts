@@ -51,7 +51,7 @@ import {
 } from "./constants";
 import { PriceOracle } from "../generated/templates/CToken/PriceOracle";
 import { CToken } from "../generated/templates/CToken/CToken";
-import { Versions } from "./versions";
+// import { Versions } from "./versions";
 
 enum EventType {
   Deposit,
@@ -1880,9 +1880,9 @@ export function _getOrCreateProtocol(
     }
   }
 
-  protocol.schemaVersion = Versions.getSchemaVersion();
-  protocol.subgraphVersion = Versions.getSubgraphVersion();
-  protocol.methodologyVersion = Versions.getMethodologyVersion();
+  protocol.schemaVersion = "1.3.2";
+  protocol.subgraphVersion = "0.0.4";
+  protocol.methodologyVersion = "0.0.6";
 
   protocol.save();
 

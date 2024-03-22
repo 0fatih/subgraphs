@@ -10,6 +10,7 @@ import { BigDecimal, BigInt } from "@graphprotocol/graph-ts";
 // https://thegraph.com/docs/en/hosted-service/what-is-hosted-service/#supported-networks-on-the-hosted-service
 export namespace Network {
   export const ARBITRUM_ONE = "ARBITRUM_ONE";
+  export const FUJI = "FUJI";
   export const ARWEAVE_MAINNET = "ARWEAVE_MAINNET";
   export const AURORA = "AURORA";
   export const AVALANCHE = "AVALANCHE";
@@ -136,7 +137,7 @@ export function exponentToBigDecimal(decimals: i32): BigDecimal {
 export function BDChangeDecimals(
   x: BigDecimal,
   from: i32,
-  to: i32
+  to: i32,
 ): BigDecimal {
   if (to > from) {
     // increase number of decimals
