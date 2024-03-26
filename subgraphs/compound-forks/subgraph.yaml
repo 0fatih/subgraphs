@@ -9,7 +9,7 @@ dataSources:
     name: Comptroller
     network: fuji
     source:
-      address: "0x3b93BaE6ca1dc25720dE39C899B5C464Cbf3E405"
+      address: "0x37F362759325f9082f4053412372ea2627411Af9"
       abi: Comptroller
       startBlock: 126
     mapping:
