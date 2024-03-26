@@ -146,14 +146,13 @@ export namespace AccountActiity {
 export const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 
 export const ETH_ADDRESS = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
-export const ETH_NAME = "Ether";
-export const ETH_SYMBOL = "ETH";
+export const ETH_NAME = "Avax";
+export const ETH_SYMBOL = "AVAX";
 
-export const COMPTROLLER_ADDRESS = "0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b";
+export const COMPTROLLER_ADDRESS = "0x37f362759325f9082f4053412372ea2627411af9";
 export const PRICE_ORACLE1_ADDRESS =
-  "0x02557a5e05defeffd4cae6d83ea3d173b272c904";
-export const SAI_ADDRESS = "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359";
-export const USDC_ADDRESS = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48";
+  "0x516e69f98d134555c92a82a4b6527e654c840fe1";
+export const USDC_ADDRESS = "0x6ce92b8a357450074e2dca0b6c75de2ba2d6ef5f";
 export const CUSDC_ADDRESS = "0x39aa39c021dfbae8fac545936693ac917d5e7563";
 export const CETH_ADDRESS = "0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5";
 export const COMP_ADDRESS = "0xc00e94cb662c3520282e6f5717214004a7f26888";
@@ -165,8 +164,8 @@ export const CTUSD_ADDRESS = "0x12392f67bdf24fae0af363c24ac620a2f67dad86";
 ///// Protocol Specific /////
 /////////////////////////////
 
-export const PROTOCOL_NAME = "Compound v2";
-export const PROTOCOL_SLUG = "compound-v2";
+export const PROTOCOL_NAME = "Milli Lend";
+export const PROTOCOL_SLUG = "mlend";
 export const USDC_DECIMALS = 6;
 export const comptrollerAddr = Address.fromString(COMPTROLLER_ADDRESS);
 export const ETH_DECIMALS = 18;
