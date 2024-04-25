@@ -7,7 +7,7 @@ description: ...
 dataSources:
   - kind: ethereum/contract
     name: Comptroller
-    network: fuji
+    network: arbitrum
     source:
       address: "0x42DAdc918126856B070389e429CE30A28b2b8FeE"
       abi: Comptroller
@@ -54,7 +54,7 @@ dataSources:
 templates:
   - name: CToken
     kind: ethereum/contract
-    network: fuji
+    network: arbitrum
     source:
       abi: CToken
     mapping:
@@ -136,7 +136,7 @@ templates:
           handler: handleAccrueInterestNew
   - name: CTokenOld
     kind: ethereum/contract
-    network: fuji
+    network: arbitrum
     source:
       abi: CTokenOld
     mapping:
