@@ -10,6 +10,7 @@ import { BigDecimal, BigInt } from "@graphprotocol/graph-ts";
 // https://thegraph.com/docs/en/hosted-service/what-is-hosted-service/#supported-networks-on-the-hosted-service
 export namespace Network {
   export const ARBITRUM_ONE = "ARBITRUM_ONE";
+  export const ARBITRUM_ORBIT = "ARBITRUM_ORBIT";
   export const FUJI = "FUJI";
   export const ARWEAVE_MAINNET = "ARWEAVE_MAINNET";
   export const AURORA = "AURORA";
