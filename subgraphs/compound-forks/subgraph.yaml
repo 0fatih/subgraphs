@@ -9,7 +9,7 @@ dataSources:
     name: Comptroller
     network: arbitrum
     source:
-      address: "0x42DAdc918126856B070389e429CE30A28b2b8FeE"
+      address: "0xB5dCeEFD8AD24Afb9bC761d82F091A4560e37386"
       abi: Comptroller
       startBlock: 126
     mapping:
