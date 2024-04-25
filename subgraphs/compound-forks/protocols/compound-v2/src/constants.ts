@@ -24,7 +24,7 @@ export namespace Network {
   export const MATIC = "MATIC"; // aka Polygon
   export const XDAI = "XDAI"; // aka Gnosis Chain
   export const FUJI = "FUJI";
-  export const ARBITRUM_ORBIT = "ARBITRUM_ORBIT";
+  export const ARBITRUM = "ARBITRUM";
 
   // other networks
   export const UBIQ = "UBIQ";

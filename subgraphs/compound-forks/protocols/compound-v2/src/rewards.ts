@@ -255,7 +255,7 @@ function getStartingBlockRate(): BigDecimal {
     return BigDecimal.fromString("5");
   } else if (network == Network.FUJI) {
     return BigDecimal.fromString("5");
-  } else if (network == Network.ARBITRUM_ORBIT) {
+  } else if (network == Network.ARBITRUM) {
     return BigDecimal.fromString("5");
   }
   // Blocks are mined as needed
