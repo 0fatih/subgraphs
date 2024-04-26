@@ -1,8 +1,0 @@
-{
-  "chain": "near-mainnet",
-  "contract": "contract.main.burrow.near",
-  "startBlock": 62303110,
-  "graftEnabled": false,
-  "subgraphId": "QmTCx2gua6tEZEAWDpeyEMsyE9wWtjHcKTXQYUBZnRgu98",
-  "graftStartBlock": 111661867
-}

@@ -1,33 +1,10 @@
 {
-  "dependencies": {
-    "minimist": "^1.2.8",
-    "mustache": "^4.2.0"
-  },
-  "devDependencies": {
-    "@graphprotocol/graph-ts": "^0.28.1",
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "@typescript-eslint/parser": "^5.62.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^8.10.0",
-    "eslint-plugin-rulesdir": "^0.2.2",
-    "ethereum-address": "^0.0.4",
-    "folderslint": "^1.2.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.3.0",
-    "prettier": "^2.8.8",
-    "typescript": "^4.9.5"
-  },
-  "lint-staged": {
-    "subgraphs/**/*.ts": "npm run lint",
-    "*.{ts,css,md}": "prettier --write"
-  },
+  "license": "MIT",
   "scripts": {
-    "prettier": "prettier --loglevel silent --write \"**/*.{md,jsx,tsx,ts,json,html,css,js}\"",
-    "prettier-check": "prettier --check",
-    "lint:fix": "npx eslint --fix --max-warnings 0",
-    "lint": "npx eslint",
-    "lint:subgraphs": "npx eslint -c subgraphs/.eslintrc.js",
-    "prepare": "husky install",
-    "folderslint": "cd subgraphs && folderslint"
+    "format": "npx prettier --write ."
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "^0.65.0",
+    "@graphprotocol/graph-ts": "^0.32.0"
   }
 }

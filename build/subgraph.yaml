@@ -1,0 +1,183 @@
+specVersion: 0.0.4
+repository: https://github.com/messari/subgraphs
+schema:
+  file: schema.graphql
+description: ...
+dataSources:
+  - kind: ethereum/contract
+    name: Comptroller
+    network: arbitrum
+    source:
+      address: "0xBc2ea95AB591748fa18cd093737bCfb6e5111FFB"
+      abi: Comptroller
+      startBlock: 256
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: Comptroller/Comptroller.wasm
+      entities:
+        - LendingProtocol
+        - Market
+        - Token
+      abis:
+        - name: Comptroller
+          file: Comptroller/abis/Comptroller.json
+        - name: CToken
+          file: Comptroller/abis/CToken.json
+        - name: PriceOracle1
+          file: Comptroller/abis/compound-v2/PriceOracle1.json
+        - name: PriceOracle2
+          file: Comptroller/abis/compound-v2/PriceOracle2.json
+        - name: ERC20
+          file: Comptroller/abis/ERC20.json
+        - name: ERC20SymbolBytes
+          file: Comptroller/abis/compound-v2/ERC20SymbolBytes.json
+        - name: ERC20NameBytes
+          file: Comptroller/abis/compound-v2/ERC20NameBytes.json
+      eventHandlers:
+        - event: MarketListed(address)
+          handler: handleMarketListed
+        - event: MarketEntered(address,address)
+          handler: handleMarketEntered
+        - event: MarketExited(address,address)
+          handler: handleMarketExited
+        - event: NewCollateralFactor(address,uint256,uint256)
+          handler: handleNewCollateralFactor
+        - event: NewLiquidationIncentive(uint256,uint256)
+          handler: handleNewLiquidationIncentive
+        - event: NewPriceOracle(address,address)
+          handler: handleNewPriceOracle
+        - event: ActionPaused(address,string,bool)
+          handler: handleActionPaused
+templates:
+  - name: CToken
+    kind: ethereum/contract
+    network: arbitrum
+    source:
+      abi: CToken
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: Comptroller/Comptroller.wasm
+      entities:
+        - Event
+        - Market
+        - UsageMetricsDailySnapshot
+        - FinancialsDailySnapshot
+        - MarketDailySnapshot
+      abis:
+        - name: Comptroller
+          file: CToken/abis/Comptroller.json
+        - name: PriceOracle1
+          file: CToken/abis/compound-v2/PriceOracle1.json
+        - name: PriceOracle2
+          file: CToken/abis/compound-v2/PriceOracle2.json
+        - name: PriceOracle
+          file: CToken/abis/PriceOracle.json
+        - name: ERC20
+          file: CToken/abis/ERC20.json
+        - name: CToken
+          file: CToken/abis/CToken.json
+        - name: _ERC20
+          file: CToken/abis/prices/ERC20.json
+        - name: CurveRegistry
+          file: CToken/abis/prices/Curve/Registry.json
+        - name: CurvePoolRegistry
+          file: CToken/abis/prices/Curve/PoolRegistry.json
+        - name: CalculationsCurve
+          file: CToken/abis/prices/Calculations/Curve.json
+        - name: YearnLensContract
+          file: CToken/abis/prices/YearnLens.json
+        - name: ChainLinkContract
+          file: CToken/abis/prices/ChainLink.json
+        - name: UniswapRouter
+          file: CToken/abis/prices/Uniswap/Router.json
+        - name: UniswapFactory
+          file: CToken/abis/prices/Uniswap/Factory.json
+        - name: UniswapPair
+          file: CToken/abis/prices/Uniswap/Pair.json
+        - name: SushiSwapRouter
+          file: CToken/abis/prices/SushiSwap/Router.json
+        - name: SushiSwapFactory
+          file: CToken/abis/prices/SushiSwap/Factory.json
+        - name: SushiSwapPair
+          file: CToken/abis/prices/SushiSwap/Pair.json
+        - name: CalculationsSushiSwap
+          file: CToken/abis/prices/Calculations/SushiSwap.json
+      eventHandlers:
+        - event: Mint(address,uint256,uint256)
+          handler: handleMint
+        - event: Redeem(address,uint256,uint256)
+          handler: handleRedeem
+        - event: Borrow(address,uint256,uint256,uint256)
+          handler: handleBorrow
+        - event: RepayBorrow(address,address,uint256,uint256,uint256)
+          handler: handleRepayBorrow
+        - event: LiquidateBorrow(address,address,uint256,address,uint256)
+          handler: handleLiquidateBorrow
+        - event: NewReserveFactor(uint256,uint256)
+          handler: handleNewReserveFactor
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: AccrueInterest(uint256,uint256,uint256,uint256)
+          handler: handleAccrueInterestNew
+  - name: CTokenOld
+    kind: ethereum/contract
+    network: arbitrum
+    source:
+      abi: CTokenOld
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: Comptroller/Comptroller.wasm
+      entities:
+        - Event
+        - Market
+        - UsageMetricsDailySnapshot
+        - FinancialsDailySnapshot
+        - MarketDailySnapshot
+      abis:
+        - name: Comptroller
+          file: CTokenOld/abis/Comptroller.json
+        - name: CTokenOld
+          file: CTokenOld/abis/compound-v2/CTokenOld.json
+        - name: PriceOracle1
+          file: CTokenOld/abis/compound-v2/PriceOracle1.json
+        - name: PriceOracle2
+          file: CTokenOld/abis/compound-v2/PriceOracle2.json
+        - name: ERC20
+          file: CTokenOld/abis/ERC20.json
+        - name: CToken
+          file: CTokenOld/abis/CToken.json
+        - name: _ERC20
+          file: CTokenOld/abis/prices/ERC20.json
+        - name: CurveRegistry
+          file: CTokenOld/abis/prices/Curve/Registry.json
+        - name: CurvePoolRegistry
+          file: CTokenOld/abis/prices/Curve/PoolRegistry.json
+        - name: CalculationsCurve
+          file: CTokenOld/abis/prices/Calculations/Curve.json
+        - name: YearnLensContract
+          file: CTokenOld/abis/prices/YearnLens.json
+        - name: ChainLinkContract
+          file: CTokenOld/abis/prices/ChainLink.json
+        - name: UniswapRouter
+          file: CTokenOld/abis/prices/Uniswap/Router.json
+        - name: UniswapFactory
+          file: CTokenOld/abis/prices/Uniswap/Factory.json
+        - name: UniswapPair
+          file: CTokenOld/abis/prices/Uniswap/Pair.json
+        - name: SushiSwapRouter
+          file: CTokenOld/abis/prices/SushiSwap/Router.json
+        - name: SushiSwapFactory
+          file: CTokenOld/abis/prices/SushiSwap/Factory.json
+        - name: SushiSwapPair
+          file: CTokenOld/abis/prices/SushiSwap/Pair.json
+        - name: CalculationsSushiSwap
+          file: CTokenOld/abis/prices/Calculations/SushiSwap.json
+      eventHandlers:
+        - event: AccrueInterest(uint256,uint256,uint256)
+          handler: handleAccrueInterestOld
